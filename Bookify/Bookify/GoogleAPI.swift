@@ -75,36 +75,43 @@ class GoogleAPI: NSObject {
     func parseDictionary(){
         if book != nil{
             let items = book![0]
-            let volumeInfo = items["volumeInfo"]
+            let volumeInfo = items["volumeInfo"] as! NSDictionary
             
             //title
-            let title = volumeInfo?["title"] as? String
+            let title = volumeInfo["title"] as? String
             //print ("Title \(title)")
             self.title = title
             
             //image
-            let imageLinks = volumeInfo?["imageLinks"]
-            let thumbnail = imageLinks!?["thumbnail"] as? String
+            let imageLinks = volumeInfo["imageLinks"] as? NSDictionary
+            let thumbnail = imageLinks!["thumbnail"] as? String
             //print("url \(thumbnail)")
             self.imageUrl = NSURL(string: thumbnail!)!
             //self.previewCover!.setImageWithURL(imageUrl!)
             
             //author
-            let authors = volumeInfo?["authors"] as? NSDictionary
-            self.author = authors![0] as? String
-            
+            let authors = volumeInfo.valueForKey("authors") as! NSArray
+            self.author = authors[0] as? String
+
             //isbn
-            let industryIdentifiers = volumeInfo?["industryIdentifiers"] as? NSDictionary
+            //let industryIdentifiers = volumeInfo.valueForKey("industryIdentifiers") as? NSDictionary
+            let industryIdentifiers = volumeInfo["industryIdentifiers"] as? NSDictionary
+            
             //isbn10
-            let identifier10 = industryIdentifiers![0] as! NSDictionary
-            self.isbn10 = identifier10["identifier"] as? String
+            //let identifier10 = industryIdentifiers![0] as? NSDictionary
+            //self.isbn10 = identifier10!["identifier"] as? String
+            self.isbn10 = "123"
             //isbn13
-            let identifier13 = industryIdentifiers![1] as! NSDictionary
-            self.isbn13 = identifier13["identifier"] as? String
+            //let identifier13 = industryIdentifiers![1] as? NSDictionary
+//            self.isbn13 = identifier13!["identifier"] as? String
+            self.isbn13 = "123"
             
             print(author)
             print(isbn10)
             print(self.title)
+            print(self.author)
+            print(self.isbn10)
+            print(self.isbn13)
             
             NSNotificationCenter.defaultCenter().postNotificationName("Google", object: nil)
             

@@ -27,6 +27,7 @@
 		E56A23FF1C91089800A742A9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A23FE1C91089800A742A9 /* ProfileViewController.swift */; };
 		E58E61651C9F234F00B6EA04 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E61641C9F234F00B6EA04 /* SearchViewController.swift */; };
 		E596C0171C93C7DB007AB4D3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E596C0161C93C7DB007AB4D3 /* TabBarViewController.swift */; };
+		E59E02CD1CD04D8000214E97 /* no-book.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E59E02CC1CD04D8000214E97 /* no-book.jpg */; };
 		E5B252B11CA33F7F00263749 /* iconmonstr-banknote-15-24.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B252AE1CA33F7F00263749 /* iconmonstr-banknote-15-24.png */; };
 		E5B252B21CA33F7F00263749 /* iconmonstr-star-5-24.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B252AF1CA33F7F00263749 /* iconmonstr-star-5-24.png */; };
 		E5B252B31CA33F7F00263749 /* iconmonstr-user-6-24.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B252B01CA33F7F00263749 /* iconmonstr-user-6-24.png */; };
@@ -84,6 +85,7 @@
 		E56A23FE1C91089800A742A9 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E58E61641C9F234F00B6EA04 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E596C0161C93C7DB007AB4D3 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		E59E02CC1CD04D8000214E97 /* no-book.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "no-book.jpg"; path = "../../Files/no-book.jpg"; sourceTree = "<group>"; };
 		E5B252AE1CA33F7F00263749 /* iconmonstr-banknote-15-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconmonstr-banknote-15-24.png"; path = "../../BookifyLogo&Icons/control_bar/iconmonstr-banknote-15-24.png"; sourceTree = "<group>"; };
 		E5B252AF1CA33F7F00263749 /* iconmonstr-star-5-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconmonstr-star-5-24.png"; path = "../../BookifyLogo&Icons/control_bar/iconmonstr-star-5-24.png"; sourceTree = "<group>"; };
 		E5B252B01CA33F7F00263749 /* iconmonstr-user-6-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconmonstr-user-6-24.png"; path = "../../BookifyLogo&Icons/control_bar/iconmonstr-user-6-24.png"; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 		E58E61531C9F12EA00B6EA04 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				E59E02CC1CD04D8000214E97 /* no-book.jpg */,
 				E5B252AE1CA33F7F00263749 /* iconmonstr-banknote-15-24.png */,
 				E5B252AF1CA33F7F00263749 /* iconmonstr-star-5-24.png */,
 				E5B252B01CA33F7F00263749 /* iconmonstr-user-6-24.png */,
@@ -363,7 +366,7 @@
 				TargetAttributes = {
 					E56A23C51C91038600A742A9 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 656N9RD9VG;
+						DevelopmentTeam = QNP6W6675Q;
 					};
 					E56A23D91C91038600A742A9 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -409,6 +412,7 @@
 				E56A23D41C91038600A742A9 /* LaunchScreen.storyboard in Resources */,
 				E56A23D11C91038600A742A9 /* Assets.xcassets in Resources */,
 				E5B252B31CA33F7F00263749 /* iconmonstr-user-6-24.png in Resources */,
+				E59E02CD1CD04D8000214E97 /* no-book.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,7 +649,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Bookify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.gvzq.github.Bookif;
+				PRODUCT_BUNDLE_IDENTIFIER = io.gvzq.github.Bookify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -660,7 +664,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Bookify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.gvzq.github.Bookif;
+				PRODUCT_BUNDLE_IDENTIFIER = io.gvzq.github.Bookify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

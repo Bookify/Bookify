@@ -33,6 +33,10 @@ class SellViewController: UIViewController, UINavigationControllerDelegate, UIPi
         coursePickView.dataSource = self
     }
     
+    override func viewDidAppear(animated: Bool) {
+        coursePickField.alpha = 0
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
