@@ -319,6 +319,8 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBAction func saveCollegeMajorChange(sender: AnyObject) {
         // Write to college major label
         print("saved!")
+        print("selected item is \(majors[counter])")
+        self.collegeMajorLabel.text = majors[counter]
         // Hide views
         self.editButton.alpha = 0
         fadeOutPickerView()

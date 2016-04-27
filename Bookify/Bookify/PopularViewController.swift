@@ -71,6 +71,7 @@ class PopularViewController: UIViewController, UICollectionViewDataSource, UICol
 
         // construct query
         let query = PFQuery(className: "Book")
+        query.orderByAscending("messages")
         query.whereKey("title", containsString: searchController.searchBar.text! )
         query.limit = 20
 

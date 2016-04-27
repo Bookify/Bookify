@@ -16,13 +16,15 @@ class ChatViewController: JSQMessagesViewController {
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor(red: 0/255, green: 175/255, blue: 252/255, alpha: 1.0))
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor(red: 230/255, green: 229/255, blue: 235/255, alpha: 1.0))
     var messages = [JSQMessage]()
+    var receivedMessages = NSArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        onTimer()
         self.setup()
-        self.addDemoMessages()        
+//        self.addDemoMessages()        
     }
     
     @IBAction func exitChat(sender: AnyObject) {
@@ -53,15 +55,15 @@ class ChatViewController: JSQMessagesViewController {
 
 // MARK - Setup
 extension ChatViewController {
-    func addDemoMessages() {
-        for i in 1...10 {
-            let sender = (i%2 == 0) ? "Server" : self.senderId
-            let messageContent = "Message nr. \(i)"
-            let message = JSQMessage(senderId: sender, displayName: sender, text: messageContent)
-            self.messages += [message]
-        }
-        self.reloadMessagesView()
-    }
+//    func addDemoMessages() {
+//        for i in 1...10 {
+//            let sender = (i%2 == 0) ? "Server" : self.senderId
+//            let messageContent = "Message nr. \(i)"
+//            let message = JSQMessage(senderId: sender, displayName: sender, text: messageContent)
+//            self.messages += [message]
+//        }
+//        self.reloadMessagesView()
+//    }
     
     func setup() {
         self.senderId = UIDevice.currentDevice().identifierForVendor?.UUIDString
@@ -118,13 +120,50 @@ extension ChatViewController {
             return self.incomingBubble
         }
     }
+    
+    func onTimer() {
+        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(ChatViewController.onTimer), userInfo: nil, repeats: true)
+        print("Running")
+        // construct query
+        let query = PFQuery(className: "Messages")
+        query.orderByAscending("message")
+        query.limit = 20
+        // fetch data asynchronously
+        query.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) -> Void in
+            if let result = result {
+                // do something with the array of object returned by the call
+                self.receivedMessages = result
+                print("received messages are \(self.receivedMessages)")
+                
+                var message = [JSQMessage]()
+            
+                for i in 0 ..< result.count {
+    
+                    message.append(JSQMessage.init(senderId: "Chat", displayName: "Gerardo", text: result[i].objectForKey("message") as? String))
+
+                }
+                
+                self.messages = message
+                //self.messages = self.receivedMessages as! [JSQMessage]
+                self.collectionView.reloadData()
+            } else {
+                // print(error?.localizedDescription)
+            }
+        }
+    }
 }
 
 // MARK - Toolbar
 extension ChatViewController {
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
         let message = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
-        print(message)
+        Post.postMessage(text) { (success: Bool, error: NSError?) in
+            if error == nil {
+                print("Successfully posted message to Parse!")
+            } else {
+                print("Couldn't post message. You done goofed.")
+            }
+        }
         self.messages += [message]
         self.finishSendingMessage()
     }
